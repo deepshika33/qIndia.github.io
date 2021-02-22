@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="en-US">
+	<head>
+		<meta name="description" content="HTML and CSS are only part of the picture. The modern front-end developer will also need to be versed in version control, task automators, preprocessors, frameworks, the command line and more.">
+		<meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <title>Modern Web Project</title>
+	    <style>
+		    //Backgruond image 
+			.background-wrapper{
+				height: 40rem;
+				color: $white;
+				background-image: url("../../img/hero.jpg");
+				background-repeat: no-repeat;
+				background-size: cover;
+			 	background-attachment: fixed;
+				
+				@include max-down(768px) {
+					height: 45rem;
+					background-attachment: scroll;
+				}
+			}
+			
+			
+			.logo,
+			.main-nav,
+			.nav-item
+			 {
+				display: inline-block;
+			}
+			
+			.logo {
+				width: 9.8125rem;
+				height: 6.25rem;
+				margin-top: 1.125rem;
+				margin-left: 2.125rem;
+				
+				@include max-down(768px) {
+					text-align: center;
+					margin-top: .75rem;
+					margin-left: 1.25rem;
+					width: 4.5rem;
+					height: 3rem;
+				}
+				
+				img {
+					
+					@include max-down(768px) {
+						width: 100%;
+						height: 100%;
+					}
+					
+				}
+			}
+			
+			//Navigation
+			.main-nav {
+				float: right;
+				margin-top: 2.1875rem;
+				margin-right: 2.1875rem;
+				
+				@include max-down(768px) {
+					@include clearfix;
+					float: none;
+					top: 0;
+					left: 0;
+					right: 0;
+					bottom: 0;
+					z-index: -1;
+					position: fixed;
+					display: block;
+					margin: 0 auto;
+					opacity: 0;
+					
+					.nav-shown & {
+						z-index: 999;
+					    opacity: 1;
+					    background-color: rgba(0,0,0,0.85);
+					    transition: all 0.25s ease-out;
+					}
+				}
+			}
+			
+			.nav-list {
+				@include max-down(768px) {
+					margin: 0 auto;
+					padding: 0;
+				}
+			}
+			
+			.nav-item {
+				padding-left: 1.75rem;
+				list-style: none;
+				transition: background-color .5s;
+				
+				@include max-down(768px) {
+					text-align: center;
+					display: block;
+					margin: 0;
+					padding: 2rem 4rem;
+				    border-bottom: .5px solid #FFF;
+				}
+			}
+			
+			.nav-item-link {
+				width: 100%;
+				height: 100%;
+				font-size: 1.125rem;
+				text-decoration: none;
+				color: $white;
+				font-weight: $medium;
+				transition: color .5s;
+			}
+			
+			.nav-item:hover {
+				@include max-down(768px) {
+					background-color: #FFF;
+					
+					.nav-item-link {
+						color: black;	
+					}
+				}
+				
+			}
+			
+			//Responsive Nav Button
+			.menu-btn {
+				
+				display: none;
+				
+				@include max-down(768px) {
+					position: absolute;
+					top: 0.75rem;
+					right: 1.25rem;
+					z-index: 9999;
+					display: inline-block; 
+					margin: 0;
+					padding: 0;
+					width: 41px;
+					height: 36px;
+					border: none;
+					background: none;
+					outline: none;
+					cursor: pointer;
+					
+					span {
+						@include hide-text;
+						position: relative;
+						top: 0;
+						margin: 0 auto;
+						width: 30px;
+						height: 3px;
+						overflow: hidden;
+						opacity: 1;
+						background: #FFF;
+						transition: all 0.1s ease-out;
+					
+						.nav-shown & {
+							opacity: 0;
+							transform: scale(0);
+						}
+					}
+					
+					&::before, &::after {
+						content: "";
+						position: absolute;
+						left: 0;
+						right: 0;
+						margin: 0 auto;
+						width: 30px;
+						height: 3px;
+						background: #FFF;
+						transition: all 0.1s ease-out;
+					}
+				
+					&::before {
+						top: 8px;
+				
+						.nav-shown & {
+							top: 18px;
+							transform: rotate(135deg);
+						}
+					}
+				
+					&::after {
+						bottom: 7px;
+				
+						.nav-shown & {
+							bottom: 15px;
+							transform: rotate(-135deg);
+						}
+					}
+				}
+			}
+			
+			.main-hero {
+				@extend %centered;
+				height: 20rem;
+			}
+			
+			.main-hero-heading,
+			.main-hero-date {
+				@include vertical-align($val: 47%);
+				margin: 0;
+				
+				@include max-down(768px) {
+					@include vertical-align(60%);
+				}
+			}
+			
+			.main-hero-heading {
+				font-size: 5.75rem;
+				font-weight: $thin;
+			}
+			
+			.main-hero-date {
+				font-size: 1.5rem;
+				font-weight: $light;
+				
+			}
+			
+			.main-hero-date::after {
+				content:"</>";
+				display: block;
+			}
+	    </style>
+	    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,300i,400,500,700" rel="stylesheet">
+	</head>
+	
+	<!-- Body Styles -->
+	<body>
+		<div class="background-wrapper slide">
+			
+			<!-- Header	 -->
+			<header class="main-header">
+				<a href="#" class="logo"><img src="img/factory-logo.png" alt="The Factory Logo"/></a> 
+				<nav class="main-nav">
+					<ul class="nav-list">
+						<li class="nav-item"><a href="#description" class="nav-item-link">Description</a></li>
+						<li class="nav-item"><a href="#colearners" class="nav-item-link">coLearners</a></li> 
+						<li class="nav-item"><a href="#instructor" class="nav-item-link">Instructor</a></li>
+						<li class="nav-item"><a href="#footer" class="nav-item-link">Sign up</a></li>
+					</ul>
+				</nav> 
+				<button class="menu-btn js-menu-btn"><span>Menu</span></button>		            
+			</header>
+			<section class="main-hero">
+				<h1 class="main-hero-heading">Modern Web</h1>
+				<p class="main-hero-date">Staring Jan. 2017</p>
+			</section>
+		</div>
+		
+		<!-- 	Intro Section	 -->
+		<section class="intro" id="description">
+			<p class="intro-text">HTML and CSS are only part of the picture. The modern front-end developer will also need to be versed in version control, task automators, preprocessors, frameworks, the command line and more.</p>
+			<div class="divider"></div>
+		</section>
+		
+		<!-- 	Goals Section	 -->
+		<section class="goals">
+		<h1 class="goals-header">Course Goals</h1>
+		<ul class="goals-list">
+			<li class="goals-list-item">
+				<h2 class="goals-heading">Semantic HTML</h2>
+				<p class="goals-text">You'll learn how to structure your pages using the minimum elements necessary. With an eye on semantics, you'll also learn how new HTML5 elements describe a page's structure more clearly and concisely to the brwoser and assistive technologies.</p>
+			</li>
+			<li class="goals-list-item">
+				<h2 class="goals-heading">CSS</h2>
+				<p class="goals-text">CSS3 and modern browsers have gien us a whole new set of tools. You'll learn some best practices for writing CSS and how to mindfully take advantage of new properties to create beautiful layouts.</p>
+			</li>
+			<li class="goals-list-item">
+				<h2 class="goals-heading">SASS</h2>
+				<p class="goals-text">You'll learn why front-end developers love CSS preprocessors like SASS. By extending CSS with familiar programming mainstays like variables, functions, and equations, SASS has reinvented the workflow of writing CSS.</p>
+			</li>	
+			<li class="goals-list-item">
+				<h2 class="goals-heading">Responsive Design</h2>
+				<p class="goals-text">The goal of responsive design is to provide the best experience on every device. We'll discuss the best way to set breakpoints and how to make sure your images look great and load fast.</p>
+			</li>
+			<li class="goals-list-item">
+				<h2 class="goals-heading">Javascript/Jquery</h2>
+				<p class="goals-text">You'll learn how javascript and jquery can provide necessary interaction for your sites and what frameworks and libraries are essential tools for the modern front-end developer.</p>
+			</li>
+			<li class="goals-list-item">
+				<h2 class="goals-heading">Version Control & Task Automators</h2>
+				<p class="goals-text">Get up and running with Git. You'll learn how to integrate version control into your workflow and how to contribute to a code repository. You'll also learn the power of task automators.</p>
+			</li>
+		</section>
+		
+		<!-- 	Stylesheeet link under the fold	 -->
+		<link rel="stylesheet" type="text/css" href="assets/css/style.css">	
+		
+		<!-- 	coLearners Section	 -->
+		<section class="colearners" id="colearners">
+			<h1 class="colearners-heading">Meet the coLearners</h1>
+			<ul class="colearners-list">
+				<li class="colearners-item">
+					<img class="colearners-photo" src="img/colearner-m1.jpg" alt="Picture of colearner" />
+					<h2>David Bolt</h2>
+					<ul class="social-list">
+					  <li class="social-list-item"><a href="#" class="social-list-link facebook">Facebook</a></li>
+					  <li class="social-list-item"><a href="#" class="social-list-link twitter">Twitter</a></li>
+					  <li class="social-list-item"><a href="#" class="social-list-link dribble">Dribble</a></li>
+					  <li class="social-list-item"><a href="#" class="social-list-link linkedin">LinkedIn</a></li>
+					</ul>
+				</li>
+				<li class="colearners-item">
+					<img class="colearners-photo" src="img/colearner-f1.jpg" alt="Picture of colearner" />
+					<h2>Heidi Browning</h2>
+					<ul class="social-list">
+					  <li class="social-list-item"><a href="#" class="social-list-link facebook">Facebook</a></li>
+					  <li class="social-list-item"><a href="#" class="social-list-link twitter">Twitter</a></li>
+					  <li class="social-list-item"><a href="#" class="social-list-link dribble">Dribble</a></li>
+					  <li class="social-list-item"><a href="#" class="social-list-link linkedin">LinkedIn</a></li>
+					</ul>
+				</li>
+				<li class="colearners-item">
+					<img class="colearners-photo" src="img/colearner-m2.jpg" alt="Picture of colearner" />
+					<h2>Ritaban Chowdhury</h2>
+					<ul class="social-list">
+					  <li class="social-list-item"><a href="#" class="social-list-link facebook">Facebook</a></li>
+					  <li class="social-list-item"><a href="#" class="social-list-link twitter">Twitter</a></li>
+					  <li class="social-list-item"><a href="#" class="social-list-link dribble">Dribble</a></li>
+					  <li class="social-list-item"><a href="#" class="social-list-link linkedin">LinkedIn</a></li>
+					</ul>
+				</li>
+				<li class="colearners-item">
+					<img class="colearners-photo" src="img/colearner-m1.jpg" alt="Picture of colearner" />
+					<h2>Timothy Haines</h2>
+					<ul class="social-list">
+					  <li class="social-list-item"><a href="#" class="social-list-link facebook">Facebook</a></li>
+					  <li class="social-list-item"><a href="#" class="social-list-link twitter">Twitter</a></li>
+					  <li class="social-list-item"><a href="#" class="social-list-link dribble">Dribble</a></li>
+					  <li class="social-list-item"><a href="#" class="social-list-link linkedin">LinkedIn</a></li>
+					</ul>
+				</li>
+				<li class="colearners-item">
+					<img class="colearners-photo" src="img/colearner-f2.jpg" alt="Picture of colearner" />
+					<h2>Pam Henson</h2>
+					<ul class="social-list">
+					  <li class="social-list-item"><a href="#" class="social-list-link facebook">Facebook</a></li>
+					  <li class="social-list-item"><a href="#" class="social-list-link twitter">Twitter</a></li>
+					  <li class="social-list-item"><a href="#" class="social-list-link dribble">Dribble</a></li>
+					  <li class="social-list-item"><a href="#" class="social-list-link linkedin">LinkedIn</a></li>
+					</ul>
+				</li>
+				<li class="colearners-item">
+					<img class="colearners-photo" src="img/colearner-f1.jpg" alt="Picture of colearner" />
+					<h2>Danielle Kendra</h2>
+					<ul class="social-list">
+					  <li class="social-list-item"><a href="#" class="social-list-link facebook">Facebook</a></li>
+					  <li class="social-list-item"><a href="#" class="social-list-link twitter">Twitter</a></li>
+					  <li class="social-list-item"><a href="#" class="social-list-link dribble">Dribble</a></li>
+					  <li class="social-list-item"><a href="#" class="social-list-link linkedin">LinkedIn</a></li>
+					</ul>
+				</li>
+				<li class="colearners-item">
+					<img class="colearners-photo" src="img/colearner-m1.jpg" alt="Picture of colearner" />
+					<h2>Michael Reick</h2>
+					<ul class="social-list">
+					  <li class="social-list-item"><a href="#" class="social-list-link facebook">Facebook</a></li>
+					  <li class="social-list-item"><a href="#" class="social-list-link twitter">Twitter</a></li>
+					  <li class="social-list-item"><a href="#" class="social-list-link dribble">Dribble</a></li>
+					  <li class="social-list-item"><a href="#" class="social-list-link linkedin">LinkedIn</a></li>
+					</ul>
+				</li>
+				<li class="colearners-item">
+					<img class="colearners-photo" src="img/colearner-m2.jpg" alt="Picture of colearner" />
+					<h2>Christopher Simmons</h2>
+					<ul class="social-list">
+					  <li class="social-list-item"><a href="#" class="social-list-link facebook">Facebook</a></li>
+					  <li class="social-list-item"><a href="#" class="social-list-link twitter">Twitter</a></li>
+					  <li class="social-list-item"><a href="#" class="social-list-link dribble">Dribble</a></li>
+					  <li class="social-list-item"><a href="#" class="social-list-link linkedin">LinkedIn</a></li>
+					</ul>
+				</li>
+				<li class="colearners-item">
+					<img class="colearners-photo" src="img/colearner-m1.jpg" alt="Picture of colearner" />
+					<h2>Cody Turnock</h2>
+					<ul class="social-list">
+					  <li class="social-list-item"><a href="#" class="social-list-link facebook">Facebook</a></li>
+					  <li class="social-list-item"><a href="#" class="social-list-link twitter">Twitter</a></li>
+					  <li class="social-list-item"><a href="#" class="social-list-link dribble">Dribble</a></li>
+					  <li class="social-list-item"><a href="#" class="social-list-link linkedin">LinkedIn</a></li>
+					</ul>
+				</li>
+				<li class="colearners-item">
+					<img class="colearners-photo" src="img/colearner-f2.jpg" alt="Picture of colearner" />
+					<h2>Zoe Wilson</h2>
+					<ul class="social-list">
+					  <li class="social-list-item"><a href="#" class="social-list-link facebook">Facebook</a></li>
+					  <li class="social-list-item"><a href="#" class="social-list-link twitter">Twitter</a></li>
+					  <li class="social-list-item"><a href="#" class="social-list-link dribble">Dribble</a></li>
+					  <li class="social-list-item"><a href="#" class="social-list-link linkedin">LinkedIn</a></li>
+					</ul>
+				</li>
+				<li class="colearners-item">
+					<img class="colearners-photo" src="img/colearner-m2.jpg" alt="Picture of colearner" />
+					<h2>Brian Workman</h2>
+					<ul class="social-list">
+					  <li class="social-list-item"><a href="#" class="social-list-link facebook">Facebook</a></li>
+					  <li class="social-list-item"><a href="#" class="social-list-link twitter">Twitter</a></li>
+					  <li class="social-list-item"><a href="#" class="social-list-link dribble">Dribble</a></li>
+					  <li class="social-list-item"><a href="#" class="social-list-link linkedin">LinkedIn</a></li>
+					</ul>
+				</li>
+				<li class="colearners-item">
+					<img class="colearners-photo" src="img/colearner-m1.jpg" alt="Picture of colearner" />
+					<h2>Henry Morrow</h2>
+					<ul class="social-list">
+					  <li class="social-list-item"><a href="#" class="social-list-link facebook">Facebook</a></li>
+					  <li class="social-list-item"><a href="#" class="social-list-link twitter">Twitter</a></li>
+					  <li class="social-list-item"><a href="#" class="social-list-link dribble">Dribble</a></li>
+					  <li class="social-list-item"><a href="#" class="social-list-link linkedin">LinkedIn</a></li> 
+					</ul>
+				</li>
+			</ul>
+		</section>
+		
+		<!-- 	Instructor Section	 -->
+		<section class="instructor" id="instructor">
+			<h1 class="instructor-heading">Meet the Instructor</h1>
+			<h2 class="instructor-name">Jeremy Abrahams</h2>
+			<h3 class="instructor-company">Mighty in the Midwest</h3>
+			<p class="instructor-description">Design and Front-End Development are a huge part of my life. Some of my other passions include music, my record collection, typography, UX, local craft beer and food, and most of all, my wife. I'm a previous coLearning graduate and full-time developer at Mighty.</p>
+		</section>
+		
+		<!-- 	Testimonial Section	 -->
+		<section class="testimonial">
+			<p class="testimonial-quote"><i>"The ability to learn in-person from an expert instructor as well as work alongside other peers in the area is invaluable."</i></p>
+			<p class="testimonial-person">Adam Delong</p>
+			<p class="testimonial-info">coLearner and graduate of</p>
+			<p class="testimonial-course"><u>Intro to Ruby</u></p>
+		</section>
+		
+		<!-- 	Footer	 -->
+		<div class="footer-background">
+			<section "main-footer" id="footer">
+				<ul class="course-info">
+					<li class="course-detail">January 17th-April 4th</li>
+					<li class="course-detail">Every Tue. 6pm - 8:30pm</li>
+					<li class="course-detail">Orientation: January 10th</li>
+					<li class="course-detail">Graduation: April 11th</li>
+					<li class="course-detail">Class size: 20 students</li>
+					<li class="course-detail">Cost: $800</li>
+				</ul>
+				<a href="#" class="sign-up-button">SIGN UP</a>
+			</section>
+			<footer class="sub-footer">
+				<img class="footer-logo" src="img/factory-logo.png" alt="factory logo"/>
+				<div class="address" itemscope itemtype="http://schema.org/address">				
+					<p class="address-1" itemprop="streetAddress">38 Fulton S. West, Suite 400</p>
+					<p class="address-2" itemprop="addressLocality">Grand Rapids, MI 49503</p>
+				</div>
+			</footer>
+		</div>
+		<script type="text/javascript" src="assets/js/lib/modernizr.js"></script>
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="src/js/app.js"></script>
+	</body>
+</html>

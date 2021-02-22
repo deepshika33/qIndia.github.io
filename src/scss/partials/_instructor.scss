@@ -1,0 +1,70 @@
+/* Innstructor Section */
+
+.instructor {
+	height: 43.8125rem;
+	padding-left: 5rem;
+	padding-top: .01rem;
+	color: $white;
+	background-image: url("../../img/instructor.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	
+	@include max-down(768px) {
+		padding-left: 0;
+	}
+	
+	@include min-max(950px, 1020px) {
+		background-size: contain;
+	}
+	
+	@include min-max(768px, 950px) {
+		background-position-x: 50%;
+	}
+	
+	@include min-max(705px, 768px) {
+		background-image: none;
+		background-color: black;
+	}
+}
+
+.instructor-heading,
+.instructor-name,
+.instructor-company,
+.instructor-description {
+	position: relative;
+	top: 13rem;
+	
+	@include max-down(768px) { 
+		text-align: center;
+	}
+}
+
+.instructor-heading {
+	margin-bottom: .9375rem;
+	font-size: 1.125rem;
+	font-weight: $light;
+}
+
+.instructor-name {
+	margin-bottom: 0;
+	margin-top: 0;
+	font-size: 2.25rem;
+	font-weight: $medium;
+}
+
+.instructor-company {
+	margin-top: .25rem;
+	font-size: 1.375;
+	font-weight: $medium;
+}
+
+.instructor-description {
+	max-width: 26.5rem;
+	font-size: 1.25rem;
+	font-weight: $regular;
+	
+	@include max-down(768px) {
+		margin: 0 auto;
+		max-width: 85%;
+	}
+}

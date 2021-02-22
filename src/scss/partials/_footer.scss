@@ -1,0 +1,94 @@
+/* Footer */
+
+.footer-background {
+	color: $white;
+	background: url("../../img/footer.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	
+	@include max-down(768px) {
+		//input smaller image
+		background-attachment: scroll;
+	}
+}
+
+.main-footer {
+	display: block;
+	height: 34.125rem;
+	
+	@include max-down(768px) {
+		height: 25rem;
+	}
+}
+
+.course-info {
+	display: inline-block;
+	margin-top: 0;
+	margin-bottom: 4.55rem;
+	padding-top: 8.8125rem;
+	padding-left: 5.75rem;
+	font-size: 2.25rem;
+	font-weight: $light;
+	list-style: none;
+	
+	@include max-down(1000px) { 
+		text-align: center;
+		display: block;
+		padding-left: 0;
+		margin-bottom: 4rem;
+		font-size: 1.5rem;
+	}
+}
+
+.course-info li:nth-child(5) {
+	padding: 2.6875rem 0;
+}
+
+.sign-up-button {
+	@extend %centered;
+	float: right;
+	display: inline-block;
+	margin-top: 12.8125rem;
+	margin-right: 7.75rem;
+	padding: 1.5rem 7.5rem;
+	font-size: 1.86875rem;
+	text-decoration: none;
+	color: $white;
+	font-weight: $bold;
+	border: 3px solid $white;
+	
+	@include max-down(1000px) { 
+		float: none;
+		display: block;
+		padding: 1rem 0;
+		margin: 0 auto 4rem;
+		width: 50%;
+		font-size: 1rem;
+	}
+}
+
+.sub-footer {
+	position: relative;
+	bottom: 0;
+	display: inline-block;
+	height: 7.875rem;
+	width: 100%;
+	background: rgba(0, 0, 0, .2);
+	
+	@include max-down(1000px) {
+		text-align: center;
+	}
+}
+
+.footer-logo,
+.address {
+	position: relative;
+	top: 2rem;
+	display: inline-block;
+	margin-left: 2rem;
+}
+
+.footer-logo {
+	width: 6.25rem;
+	height: 4rem;	
+}

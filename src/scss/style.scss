@@ -1,0 +1,121 @@
+@import "partials/normalize";
+@import "partials/variables";
+@import "partials/helpers";
+@import "partials/globals";
+// @import "partials/header";
+@import "partials/intro";
+@import "partials/goals";
+@import "partials/colearners";
+@import "partials/instructor";
+@import "partials/testimonial";
+@import "partials/footer";
+
+
+/*
+@media (max-width: 768px) {
+	.logo,
+	.main-nav {
+		display: block;
+	}
+	
+	.logo {
+		margin: 0 auto;
+		padding-top: 2rem;
+		text-align: center;
+	}
+	
+	.main-nav {
+		padding: 2rem 0 0 0;
+		margin: 0;
+		float: none;
+		text-align: center;
+		
+		.nav-list {
+			padding: 0;
+			 
+			.nav-item {
+				padding: 0 .5rem;
+			}
+		}
+	}
+	
+	.main-hero-heading,
+	.main-hero-date {
+		top: 30%;
+	}
+	
+	.background-wrapper {
+		height: 45rem;
+	}
+	
+	.intro-text {
+		max-width: 90%;
+	}
+	
+	.goals-list {
+		padding-left: 0;
+	}
+	
+	.goals-list-item {
+		width: 100%;
+		padding-right: 0;
+	}
+	
+	.goals-heading {
+		text-align: center;
+	}
+	
+	.goals-text {
+		width: 100%;
+		text-align: center;
+	}
+	
+	.colearners-item {
+		margin-right: 0;
+	}
+	
+	.instructor {
+		padding-left: 0;
+	}
+	
+	.instructor-heading,
+	.instructor-name,
+	.instructor-company,
+	.instructor-description {
+		text-align: center;
+	}
+	
+	.testimonial {
+		height: 42rem;
+	}
+	
+	.testimonial-quote {
+		font-size: 2rem;
+		max-width: 90%;
+	}
+	
+	.background-wrapper,
+	.footer-background {
+		background-attachment: none;
+	}
+	
+	.main-footer {
+		height: 25rem;
+	}
+	
+	.course-info {
+		font-size: 1.5rem;
+		display: block;
+		margin-bottom: 4rem;
+	}
+	
+	.sign-up-button {
+		float: none;
+		font-size: 1rem;
+		padding: 1rem 0;
+		display: block;
+		margin: 0 auto 4rem;
+		width: 50%;
+	}
+}
+*/
